@@ -1,0 +1,190 @@
+:root {
+    --isabelline: #f5f3ee;
+    --authentic-cream: #f6f4ef;
+    --pearly-coral: #e2c9b9;
+    --light-tan: #ddbeac;
+    --dark-salmon: #c38969;
+    --deep-brown: #4f4039;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    background-color: white;
+    color: var(--deep-brown);
+    font-family: 'IBM Plex Serif', 'Times New Roman', Times, serif;
+}
+
+.card {
+    width: min(28rem, 92vw);
+    aspect-ratio: 1.75 / 1;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+/* This entire container rotates, carrying both faces with it. */
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.7s ease-in-out;
+}
+
+.card.is-flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    overflow: hidden;
+
+    border: 1px solid var(--dark-salmon);
+    border-radius: 15px;
+    background-color: var(--isabelline);
+    box-shadow:
+        0 4px 10px rgba(104, 74, 58, 0.1),
+        0 12px 24px rgba(104, 74, 58, 0.14);
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.card-front {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    text-align: left;
+}
+
+.card-back {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    transform: rotateY(180deg);
+}
+
+.info-container {
+    flex: 1;
+}
+
+.info-container h1 {
+    display: inline-block;
+    margin: 0 0 0.35rem;
+    color: var(--deep-brown);
+    font-size: 1.5rem;
+    font-weight: 600;
+    transform-origin: left center;
+    transition:
+        transform 0.25s ease,
+        color 0.25s ease,
+        text-shadow 0.25s ease;
+}
+
+.info-container h1:hover {
+    color: var(--dark-salmon);
+    transform: translateY(-2px) scale(1.06);
+    text-shadow: 0 4px 10px rgb(195 137 105 / 25%);
+}
+
+.info-container h2 {
+    margin: 0 0 1rem;
+    color: var(--dark-salmon);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.info-container p {
+    max-width: 18rem;
+    margin: 0;
+    color: var(--deep-brown);
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    line-height: 1.45;
+}
+
+.photo {
+    flex-shrink: 0;
+    width: 4.75rem;
+    height: 4.75rem;
+    object-fit: cover;
+    border: 2px solid var(--pearly-coral);
+    border-radius: 50%;
+    box-shadow: 0 6px 14px rgba(104, 74, 58, 0.16);
+}
+
+.card-back a {
+    line-height: 0;
+}
+
+.qr-code {
+    width: 7rem;
+    height: 7rem;
+    padding: 0.25rem;
+    object-fit: contain;
+    background-color: white;
+    border: 1px solid var(--pearly-coral);
+    border-radius: 6px;
+}
+
+.card-back p {
+    margin: 0;
+    color: var(--deep-brown);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.card:focus-visible {
+    outline: 3px solid var(--dark-salmon);
+    outline-offset: 5px;
+    border-radius: 15px;
+}
+
+@media (max-width: 30rem) {
+    .card-face {
+        padding: 1.25rem;
+    }
+
+    .card-front {
+        gap: 1rem;
+    }
+
+    .photo {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .info-container h1 {
+        font-size: 1.25rem;
+    }
+
+    .info-container h2 {
+        margin-bottom: 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .info-container p {
+        font-size: 0.7rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card-inner,
+    .info-container h1 {
+        transition: none;
+    }
+}
