@@ -32,11 +32,11 @@ A visible focus outline indicates which interactive element currently has keyboa
 
 ### Keyboard Focus
 
-![Business card showing visible keyboard focus](../images/card-front.png)
+![Business card showing visible keyboard focus](./images/card-front.png)
 
 ### Accessible Back of Card
 
-![Back of business card with LinkedIn QR code](../images/card-back.png)
+![Back of business card with LinkedIn QR code](./images/card-back.png)
 
 ## JavaScript Interaction
 
